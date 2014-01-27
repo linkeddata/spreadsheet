@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Spreadsheet</title>
+</head>
+
+<body ng-app="ldss" ng-cloak ng-keydown="keydown()">
+    <div ng-view></div>
+    <style>
+        body { font-family: sans-serif; margin: 0; }
+        #head, #head td { border: none; }
+        #menu button { width: 6em; padding: 0.6em 0; display: inline; margin: 0.5em 0; }
+        #stat { color: gray; text-align: right; padding: 0 0.5em; font-style:italic; font-size: 60%; }
+        .buttons button { width: 2.5em; height: 2em; margin: auto; display: inline; }
+        .cell-div { width: 5em; height: 1.4em; position: relative; }
+        .cell-input { border: none; }
+        .cell-value { background: white; pointer-events: none; padding: 3pt 0 0 3pt; }
+        .cell-input, .cell-value { 
+            font-size: 10pt;
+            position: absolute;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .cell-input:focus + .cell-value { display: none; }
+
+        table { border-collapse: collapse; }
+        table td { border: 1px solid #ccc; overflow: hidden; }
+        .col-label, .row-label { text-align: center; background: #eee; }
+        .row-label { width: 2em; }
+
+        .selected { border: 2px solid #666; }
+        .focused { border: none; }
+        .cellerr input { background-color: yellow; }
+        .cellerr div { background-color: #f66; }
+    </style>
+    <link rel="stylesheet" type="text/css" href="lib/angular-tree-control/css/tree-control.css">
+    <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.js"></script>
+    <script type="text/javascript" src="lib/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="lib/angular-tree-control/angular-tree-control.js"></script>
+    <script type="text/javascript" src="https://w3.scripts.mit.edu/rdflib.js/dist/rdflib.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<table>
+    <tr id="head">
+        <td></td>
+        <td id="menu" colspan="{{cols.length-2}}">
+            <div>
+                <button ng-click="new()">New</button>
+                <button ng-click="open()">Open...</button>
+                <button ng-click="saveAs()">Save As...</button>
+            </div>
+        </td>
+        <td class="buttons" colspan=2 style="text-align: right; vertical-align: bottom; white-space: nowrap;">
+            <button ng-click="delCol()">-</button>
+            <button ng-click="addCol()">+</button>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="col-label" ng-repeat="c in cols">{{c}}</td>
+    </tr>
+    <tr ng-repeat="r in rows">
+        <td class="row-label">{{r}}</td>
+        <td class="cell-td" ng-repeat="c in cols" ng-class="class(c,r,this)">
+            <div class="cell-div">
+                <input id="cell_{{c+r}}" class="cell-input" ng-model="cells[c+r]" ng-focus="focus(c,r,this)" ng-keypress="inputKey(c,r,$event)"></input>
+                <div class="cell-value" ng-bind="compute(c,r)"></div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="buttons">
+            <button ng-click="delRow()" style="display: block">-</button>
+        </td>
+        <td colspan="{{cols.length}}" id="stat">
+            {{uri}}
+        </td>
+    </tr>
+    <tr class="buttons">
+        <td>
+            <button ng-click="addRow()" style="display: block">+</button>
+        </td>
+    </tr>
+</table>
