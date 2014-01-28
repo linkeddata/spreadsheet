@@ -80,7 +80,7 @@ ldss.controller('Sheet', function ($scope, $parse, $routeParams, $window, $locat
         $scope._focus.c = c;
         $scope._focus.r = r;
         $scope._sel = {};
-    }
+    };
     $scope.inputKey = function (c, r, e) {
         $scope._sel.c = c;
         $scope._sel.r = r;
@@ -90,7 +90,7 @@ ldss.controller('Sheet', function ($scope, $parse, $routeParams, $window, $locat
         }
     };
     $scope.class = function (c, r, elt) {
-        v = ""
+        v = "";
         if (c == $scope._focus.c && r == $scope._focus.r) {
             v = "focused";
         } else if (c == $scope._sel.c && r == $scope._sel.r) {
@@ -143,7 +143,7 @@ ldss.controller('Open', function ($scope, $http, $location) {
     $scope.canOpen = function () {
         var m = $scope.uri.match(/[^\/]$/);
         return $scope.uri.split("/").length > 3 && m && m.length;
-    }
+    };
     $scope.treeOptions = {
         //nodeChildren: "members",
         dirSelectable: false,
@@ -168,7 +168,7 @@ ldss.controller('Open', function ($scope, $http, $location) {
                 treeData.push({
                     "uri": $scope.uri.replace(/(.*\/)[^\/]+\/$/, "$1"),
                     "label": "../",
-                    "class": "tree-collapsed"
+                    "class": "tree-folder"
                 });
             for (var i = 0; i < members.length; i++) {
                 var uri = members[i].value,
@@ -176,11 +176,11 @@ ldss.controller('Open', function ($scope, $http, $location) {
                 var elt = {
                     "uri": uri,
                     "label": label,
-                    "class": "tree-leaf",
-                    "mdate": new Date(1000 * data[uri]['http://www.w3.org/ns/posix/stat#mtime'][0]['value'])
+                    "class": "tree-file",
+                    "mdate": new Date(1000 * data[uri]['http://www.w3.org/ns/posix/stat#mtime'][0].value)
                 };
                 if (data[elt.uri]['http://www.w3.org/1999/02/22-rdf-syntax-ns#type'][0].value == 'http://www.w3.org/ns/posix/stat#Directory') {
-                    elt.class = "tree-collapsed";
+                    elt.class = "tree-folder";
                 }
                 treeData.push(elt);
             }

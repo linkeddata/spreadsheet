@@ -34,6 +34,19 @@
         .focused { border: none; }
         .cellerr input { background-color: yellow; }
         .cellerr div { background-color: #f66; }
+
+        treecontrol.tree-browse li.tree-folder i {
+            padding: 1px 10px;
+            background: url("lib/angular-tree-control/images/folder-closed.png") no-repeat;
+        }
+        treecontrol.tree-browse li.tree-file i {
+            padding: 1px 10px;
+            background: url("lib/angular-tree-control/images/file.png") no-repeat;
+        }
+        treecontrol.tree-browse li .tree-selected {
+            background-color: #aaddff;
+            font-weight: bold;
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="lib/angular-tree-control/css/tree-control.css">
     <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
