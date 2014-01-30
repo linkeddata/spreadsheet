@@ -1,5 +1,13 @@
 var ldss = angular.module('ldss', ['ngRoute', 'treeControl']);
 
+ldss.run(function ($rootScope, $http) {
+    $rootScope.user = null;
+    $http.jsonp("https://data.fm/user.js?callback=JSON_CALLBACK")
+        .success(function (data) {
+            $rootScope.user = data;
+        });
+});
+
 ldss.config([
     '$routeProvider',
     function ($routeProvider) {
@@ -17,7 +25,7 @@ ldss.config([
     }
 ]);
 
-ldss.controller('Sheet', function ($scope, $parse, $routeParams, $window, $location) {
+ldss.controller('Sheet', function ($rootScope, $scope, $parse, $routeParams, $window, $location) {
     $scope.new = function () {
         $location.url('/open/untitled');
     };

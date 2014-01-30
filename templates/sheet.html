@@ -31,7 +31,11 @@
             <button ng-click="delRow()" style="display: block">-</button>
         </td>
         <td colspan="{{cols.length}}" id="stat">
-            {{uri}}
+            <div style="float: left;">
+                {{uri}} as user:
+                <a href="{{user}}" target="_blank">{{user}}</a>
+            </div>
+
         </td>
     </tr>
     <tr class="buttons">
